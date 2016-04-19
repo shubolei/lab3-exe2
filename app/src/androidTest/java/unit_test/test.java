@@ -18,14 +18,21 @@ public class test extends ActivityInstrumentationTestCase2<MainActivity> {
     }
     public void test_sum(){
         mainActivity =getActivity();
-        EditText num1 = (EditText)mainActivity.findViewById(R.id.editText2);
-        num1.setText(Double.toString(3));
-        EditText num2 = (EditText)mainActivity.findViewById(R.id.editText);
-        num2.setText(Double.toString(2));
-        Button btn = (Button)mainActivity.findViewById(R.id.button);
-        btn.performClick();
-        TextView textView = (TextView) mainActivity.findViewById(R.id.textView);
-        assertEquals("5",textView.getText().toString());
+        final EditText num1 = (EditText)mainActivity.findViewById(R.id.editText);
+        final EditText num2 = (EditText)mainActivity.findViewById(R.id.editText2);
+        final Button btn = (Button)mainActivity.findViewById(R.id.button);
+        final TextView textView = (TextView) mainActivity.findViewById(R.id.textView);
+        mainActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                num1.setText(Double.toString(3));
+                num2.setText(Double.toString(2));
+                btn.performClick();
+                assertEquals("1", textView.getText().toString());
+            }
+        });
+
+
 
 
     }

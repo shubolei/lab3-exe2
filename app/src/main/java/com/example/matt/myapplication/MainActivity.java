@@ -38,15 +38,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public double sum(double a, double b){
-        return a+b;
+    public double sub(double a, double b){
+        return a-b;
     }
     public void buttonOnClick(View v){
 
         num1 = Double.parseDouble(num11.getText().toString());
         num2 = Double.parseDouble(num21.getText().toString());
 
-        addR.setText(Double.toString(sum(num1,num2)));
+        addR.setText(Double.toString(sub(num1,num2)));
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
